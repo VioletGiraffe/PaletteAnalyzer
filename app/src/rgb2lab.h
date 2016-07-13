@@ -21,7 +21,7 @@ struct LAB {
 
 inline LAB rgb2lab(uint32_t color)
 {
-	int R = (color >> 16) & 0xFFU, G = (color >> 8) & 0xFFU, B = color & 0xFFU;
+	const int R = (color >> 16) & 0xFFU, G = (color >> 8) & 0xFFU, B = color & 0xFFU;
 
 	//http://www.brucelindbloom.com
 
@@ -35,9 +35,9 @@ inline LAB rgb2lab(uint32_t color)
 	double Zr = 0.825211f;
 
 	// RGB to XYZ
-	r = R/255.f; //R 0..1
-	g = G/255.f; //G 0..1
-	b = B/255.f; //B 0..1
+	r = R/255.0; //R 0..1
+	g = G/255.0; //G 0..1
+	b = B/255.0; //B 0..1
 
 	// assuming sRGB (D65)
 	if (r <= 0.04045)
@@ -56,9 +56,9 @@ inline LAB rgb2lab(uint32_t color)
 		b = pow((b+0.055)/1.055,2.4);
 
 
-	X =  0.436052025f*r     + 0.385081593f*g + 0.143087414f *b;
-	Y =  0.222491598f*r     + 0.71688606f *g + 0.060621486f *b;
-	Z =  0.013929122f*r     + 0.097097002f*g + 0.71418547f  *b;
+	X =  0.436052025f * r + 0.385081593f * g + 0.143087414f * b;
+	Y =  0.222491598f * r + 0.71688606f  * g + 0.060621486f * b;
+	Z =  0.013929122f * r + 0.097097002f * g + 0.71418547f  * b;
 
 	// XYZ to Lab
 	xr = X/Xr;

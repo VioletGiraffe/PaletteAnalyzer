@@ -1,5 +1,4 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#pragma once
 
 #include "rgb2lab.h"
 
@@ -35,5 +34,3 @@ private:
 
 	std::vector<ColorData> _colorsData;
 };
-
-#endif // MAINWINDOW_H

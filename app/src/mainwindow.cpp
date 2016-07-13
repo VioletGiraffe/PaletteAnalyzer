@@ -59,8 +59,8 @@ void MainWindow::dropEvent(QDropEvent* event)
 	qDebug() << "Scanning the image took" << timer.elapsed() << "ms";
 	timer.restart();
 
-	_colorsData.erase(std::remove_if(_colorsData.begin(), _colorsData.end(), [](const ColorData& data){
-		return data.count == 0;
+	_colorsData.erase(std::remove_if(_colorsData.begin(), _colorsData.end(), [](const ColorData& colorData){
+		return colorData.count == 0;
 	}), _colorsData.end());
 
 	std::sort(_colorsData.begin(), _colorsData.end(), [](const ColorData& l, const ColorData& r){

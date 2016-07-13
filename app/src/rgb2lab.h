@@ -10,12 +10,12 @@ T square(T number)
 }
 
 struct LAB {
-	int L;
-	int a;
-	int b;
+	double L;
+	double a;
+	double b;
 
-	inline int difference(const LAB& other) {
-		return (int)(sqrt((float)square(L - other.L) + square((float)a - other.a) + square((float)b - other.b)) + 0.5f);
+	inline double difference(const LAB& other) const {
+		return sqrt(square(L - other.L) + square((a - other.a) + square(b - other.b)));
 	}
 };
 
@@ -84,5 +84,5 @@ inline LAB rgb2lab(uint32_t color)
 	as = 500*(fx-fy);
 	bs = 200*(fy-fz);
 
-	return {(int) (2.55*Ls + .5), (int) (as + .5), (int) (bs + .5)};
+	return {Ls, as, bs};
 }

@@ -15,7 +15,7 @@ struct LAB {
 	double b;
 
 	inline double difference(const LAB& other) const {
-		return sqrt(square(L - other.L) + square((a - other.a) + square(b - other.b)));
+		return sqrt(square((L - other.L) / 100.0) + square((a - other.a) + square(b - other.b)));
 	}
 };
 

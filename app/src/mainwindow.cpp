@@ -36,7 +36,7 @@ void MainWindow::dropEvent(QDropEvent* event)
 {
 	QTime timer;
 	timer.start();
-	_colorsData = std::vector<ColorData>(0xFFFFFF + 1, {{0, 0, 0}, 0U, 0ULL});
+	_colorsData = std::vector<ColorData>(0xFFFFFFU + 1U, {{0.0, 0.0, 0.0}, 0U, 0ULL});
 
 	qDebug() << "Clearing _colorsData took" << timer.elapsed() << "ms";
 	timer.restart();

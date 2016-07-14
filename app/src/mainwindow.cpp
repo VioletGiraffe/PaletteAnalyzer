@@ -63,14 +63,19 @@ void MainWindow::dropEvent(QDropEvent* event)
 		return colorData.count == 0;
 	}), _colorsData.end());
 
+	qDebug() << "Erasing non-existing colors took" << timer.elapsed() << "ms";
+	timer.restart();
+
 	std::sort(_colorsData.begin(), _colorsData.end(), [](const ColorData& l, const ColorData& r){
 		return l.count > r.count;
 	});
 
+	qDebug() << "Sorting colors took" << timer.elapsed() << "ms";
+
 	for (ColorData& color: _colorsData)
 		color.colorLab = rgb2lab(color.colorRgb);
 
-	qDebug() << "Building colors histogram took" << timer.elapsed() << "ms";
+	
 
 	centralWidget()->update();
 }
